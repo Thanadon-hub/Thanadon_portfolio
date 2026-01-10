@@ -4,9 +4,9 @@ import { motion } from "framer-motion"
 const projects = [
   {
     title: "Smart Farm Dashboard",
-    description: "React + Firebase dashboard for monitoring IoT sensors in real time.",
-    tech: ["React", "Firebase", "Tailwind"],
-    link: "https://github.com/yourusername/smart-farm",
+    description: "Flutter + Firebase dashboard for monitoring IoT sensors in real time.",
+    tech: ["Flutter", "Firebase", "API", "IoT","Dart"],
+    link: "https://github.com/Thanadon-hub/smartfarm_Fluter",
   },
   {
     title: "People Counter System",
