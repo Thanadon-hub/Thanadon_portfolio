@@ -5,47 +5,72 @@ export default function Transcript() {
   const [open, setOpen] = useState(false);
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-sky-50 via-white to-sky-100
-                        flex items-center justify-center px-4 sm:px-6 py-12 sm:py-24">
-      
+    <section className="relative min-h-screen
+      bg-gradient-to-br from-sky-50 via-white to-purple-50
+      flex items-center justify-center px-4 sm:px-6 py-12 sm:py-24
+      overflow-hidden">
+
+      {/* background blobs */}
+      <motion.div
+        animate={{ y: [0, -30, 0], x: [0, 20, 0] }}
+        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute -top-32 -left-32 w-[26rem] h-[26rem]
+        bg-gradient-to-tr from-pink-400 via-purple-400 to-sky-400
+        opacity-30 rounded-full blur-3xl"
+      />
+
+      <motion.div
+        animate={{ y: [0, 30, 0], x: [0, -20, 0] }}
+        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute -bottom-32 -right-32 w-[28rem] h-[28rem]
+        bg-gradient-to-tr from-sky-300 via-cyan-300 to-purple-300
+        opacity-30 rounded-full blur-3xl"
+      />
+
       {/* card */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
-        className="max-w-xl w-full bg-white rounded-2xl shadow-xl
-                   border border-sky-100 p-6 sm:p-10 text-center
-                   mx-4" // เพิ่ม margin ข้างๆ บน mobile
+        className="relative z-10 max-w-xl w-full
+        backdrop-blur-xl bg-white/60
+        rounded-3xl shadow-xl border border-white/40
+        p-6 sm:p-10 text-center mx-4"
       >
-        {/* Icon with better animation */}
+        {/* icon */}
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ delay: 0.2, type: "spring" }}
           className="w-20 h-20 mx-auto mb-6 rounded-full
-                    bg-gradient-to-br from-sky-100 to-sky-200
-                    flex items-center justify-center
-                    text-4xl text-sky-600 shadow-inner"
+          bg-gradient-to-tr from-pink-300 to-sky-300
+          flex items-center justify-center
+          text-4xl text-white shadow-lg"
         >
           📄
         </motion.div>
 
-        <h2 className="text-2xl sm:text-3xl font-bold text-sky-800 mb-3">
+        <h2
+          className="text-2xl sm:text-3xl font-extrabold mb-3
+          bg-gradient-to-r from-pink-500 via-purple-500 to-sky-500
+          bg-clip-text text-transparent"
+        >
           Academic Transcript
         </h2>
 
-        <p className="text-sky-600 mb-8 text-sm sm:text-base">
+        <p className="text-gray-600 mb-8 text-sm sm:text-base">
           Official academic record of my university studies
         </p>
 
-        {/* preview with better hover */}
+        {/* preview */}
         <motion.div
-          whileHover={{ scale: 1.03, boxShadow: "0 20px 40px rgba(14, 165, 233, 0.15)" }}
+          whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.98 }}
           onClick={() => setOpen(true)}
-          className="cursor-zoom-in mb-10 rounded-xl overflow-hidden
-                   border-2 border-sky-100 shadow-lg
-                   hover:border-sky-300 transition-all duration-300"
+          className="cursor-zoom-in mb-10 rounded-2xl overflow-hidden
+          backdrop-blur-md bg-white/70
+          border border-white/40 shadow-lg
+          hover:shadow-xl transition-all duration-300"
         >
           <img
             src="/github.jpg"
@@ -53,14 +78,14 @@ export default function Transcript() {
             className="w-full h-48 sm:h-56 object-cover"
             loading="lazy"
           />
-          <div className="bg-sky-50 py-2">
+          <div className="bg-white/70 py-2">
             <p className="text-sm text-sky-600 font-medium">
               Click to view full transcript
             </p>
           </div>
         </motion.div>
 
-        {/* buttons with better spacing */}
+        {/* buttons */}
         <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
           <motion.a
             whileHover={{ scale: 1.05 }}
@@ -69,12 +94,12 @@ export default function Transcript() {
             target="_blank"
             rel="noopener noreferrer"
             className="px-6 sm:px-8 py-3 rounded-full font-semibold
-                     bg-gradient-to-r from-sky-500 to-sky-600 text-white 
-                     shadow-lg hover:shadow-xl hover:from-sky-600 hover:to-sky-700
-                     transition-all duration-300 flex items-center justify-center gap-2"
+            bg-gradient-to-r from-pink-500 to-sky-500
+            text-white shadow-lg shadow-pink-500/30
+            hover:shadow-xl transition-all
+            flex items-center justify-center gap-2"
           >
-            <span className="text-lg">👁️</span>
-            View PDF
+            👁️ View PDF
           </motion.a>
 
           <motion.a
@@ -83,84 +108,73 @@ export default function Transcript() {
             href="/student.pdf"
             download
             className="px-6 sm:px-8 py-3 rounded-full font-semibold
-                     border-2 border-sky-400 text-sky-700
-                     hover:bg-sky-50 hover:border-sky-500
-                     transition-all duration-300 flex items-center justify-center gap-2"
+            border border-purple-300 text-purple-600
+            hover:bg-purple-50 transition-all
+            flex items-center justify-center gap-2"
           >
-            <span className="text-lg">⬇️</span>
-            Download
+            ⬇️ Download
           </motion.a>
         </div>
 
-        {/* Additional info */}
-        <div className="mt-10 pt-6 border-t border-sky-100">
-          <div className="grid grid-cols-2 gap-4 text-sm text-sky-600">
+        {/* info */}
+        <div className="mt-10 pt-6 border-t border-white/40">
+          <div className="grid grid-cols-2 gap-4 text-sm text-gray-600">
             <div>
-              <p className="font-semibold">University</p>
-              <p className="text-sky-500">Chula / Mahidol / etc.</p>
+              <p className="font-semibold text-sky-700">University</p>
+              <p>Chula / Mahidol / etc.</p>
             </div>
             <div>
-              <p className="font-semibold">GPA</p>
-              <p className="text-sky-500">3.50 / 4.00</p>
+              <p className="font-semibold text-sky-700">GPA</p>
+              <p>3.50 / 4.00</p>
             </div>
           </div>
         </div>
       </motion.div>
 
-      {/* modal - improved */}
+      {/* modal */}
       <AnimatePresence>
         {open && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center
-                     bg-black/80 backdrop-blur-sm cursor-zoom-out p-4"
+            className="fixed inset-0 z-50
+            bg-black/80 backdrop-blur-sm
+            flex items-center justify-center p-4 cursor-zoom-out"
             onClick={() => setOpen(false)}
           >
-            {/* close button - improved */}
-            <motion.button
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              onClick={() => setOpen(false)}
-              className="absolute top-4 right-4 sm:top-6 sm:right-6 
-                       w-10 h-10 sm:w-12 sm:h-12 rounded-full
-                       bg-white/10 backdrop-blur-md text-white
-                       hover:bg-white/20 border border-white/20
-                       flex items-center justify-center
-                       text-xl sm:text-2xl font-light
-                       transition-all duration-200 z-10"
-              aria-label="Close"
-            >
-              ×
-            </motion.button>
-
-            {/* image with max constraints */}
             <motion.div
               initial={{ scale: 0.85, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.85, opacity: 0 }}
-              transition={{ duration: 0.35, ease: "easeOut" }}
               className="relative max-h-[85vh] max-w-[90vw]"
               onClick={(e) => e.stopPropagation()}
             >
+              <button
+                onClick={() => setOpen(false)}
+                className="absolute -top-4 -right-4
+                w-10 h-10 rounded-full
+                bg-white text-sky-600
+                shadow-lg hover:scale-110 transition"
+              >
+                ✕
+              </button>
+
               <img
                 src="/github.jpg"
                 alt="Full Transcript"
-                className="max-h-[85vh] max-w-full rounded-2xl shadow-2xl
-                         object-contain bg-white"
+                className="max-h-[85vh] max-w-full
+                rounded-2xl shadow-2xl object-contain bg-white"
               />
-              
-              {/* Download button inside modal */}
+
               <div className="mt-4 flex justify-center">
                 <a
                   href="/student.pdf"
                   download
                   className="px-6 py-2 rounded-full font-medium
-                           bg-white text-sky-700 border border-sky-200
-                           hover:bg-sky-50 hover:shadow-md
-                           transition-all duration-300 text-sm"
+                  bg-white text-sky-700 border border-sky-200
+                  hover:bg-sky-50 hover:shadow-md
+                  transition-all duration-300 text-sm"
                 >
                   ⬇️ Download PDF
                 </a>

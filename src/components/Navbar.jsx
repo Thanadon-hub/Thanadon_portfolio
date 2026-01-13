@@ -13,29 +13,31 @@ export default function Navbar() {
 
   return (
     <nav
-      className="sticky top-0 z-50
-  backdrop-blur
-  bg-sky-50/70
-  border-b border-sky-200"
+      className="
+        sticky top-0 z-50
+        backdrop-blur
+        bg-white/60
+        border-b border-white/40
+      "
     >
       <div
         className="
-        mx-auto max-w-6xl
-        rounded-full
-        bg-white/70 backdrop-blur-xl
-        shadow-lg shadow-sky-200/50
-        px-8 py-4
-        flex items-center justify-between
-      "
+          mx-auto max-w-6xl
+          rounded-full
+          bg-white/70 backdrop-blur-xl
+          shadow-xl shadow-sky-200/40
+          px-8 py-4
+          flex items-center justify-between
+        "
       >
         {/* Logo */}
         <h1
           className="
-    flex items-center gap-2
-    text-lg font-bold
-    bg-gradient-to-r from-sky-500 to-cyan-400
-    bg-clip-text text-transparent
-  "
+            flex items-center gap-2
+            text-lg font-extrabold
+            bg-gradient-to-r from-pink-500 via-purple-500 to-sky-500
+            bg-clip-text text-transparent
+          "
         >
           <span>Thanadon.com</span>
 
@@ -45,8 +47,7 @@ export default function Navbar() {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-5 h-5"
-            color="black"
+            className="w-5 h-5 text-sky-500"
           >
             <path
               strokeLinecap="round"
@@ -68,10 +69,18 @@ export default function Navbar() {
                 transition-all duration-300
                 ${
                   isActive
-                    ? "bg-sky-500 text-white shadow-md scale-105"
-                    : "text-sky-600 hover:bg-sky-100 hover:scale-105"
+                    ? `
+                      bg-gradient-to-r from-pink-500 to-sky-500
+                      text-white shadow-md scale-105
+                    `
+                    : `
+                      text-gray-600
+                      hover:bg-white/70
+                      hover:text-sky-600
+                      hover:scale-105
+                    `
                 }
-                `
+              `
               }
             >
               {link.label}

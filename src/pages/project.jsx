@@ -1,5 +1,5 @@
-import React from "react"
-import { motion } from "framer-motion"
+import React from "react";
+import { motion } from "framer-motion";
 
 const projects = [
   {
@@ -25,28 +25,51 @@ const projects = [
     link: "https://github.com/Thanadon-hub/portfolio",
     icon: "💻",
   },
-]
+];
 
 export default function Projects() {
   return (
-    <section className="min-h-screen bg-gradient-to-br from-sky-50 via-white to-sky-100 px-6 py-24">
+    <section className="relative min-h-screen px-6 py-24
+      bg-gradient-to-br from-sky-50 via-white to-purple-50 overflow-hidden">
+
+      {/* background blobs */}
+      <motion.div
+        animate={{ y: [0, -30, 0], x: [0, 20, 0] }}
+        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute -top-32 -left-32 w-[28rem] h-[28rem]
+        bg-gradient-to-tr from-pink-400 via-purple-400 to-sky-400
+        opacity-30 rounded-full blur-3xl"
+      />
+
+      <motion.div
+        animate={{ y: [0, 30, 0], x: [0, -20, 0] }}
+        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute -bottom-32 -right-32 w-[30rem] h-[30rem]
+        bg-gradient-to-tr from-sky-300 via-cyan-300 to-purple-300
+        opacity-30 rounded-full blur-3xl"
+      />
+
       {/* title */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
-        className="text-center mb-20"
+        className="relative z-10 text-center mb-20"
       >
-        <h2 className="text-4xl font-bold text-sky-700 mb-3">
-          Projects
+        <h2
+          className="text-4xl md:text-5xl font-extrabold mb-3
+          bg-gradient-to-r from-pink-500 via-purple-500 to-sky-500
+          bg-clip-text text-transparent"
+        >
+          Projects<br /> & Works
         </h2>
-        <p className="text-sky-600">
+        <p className="text-gray-600">
           Selected works & personal projects
         </p>
       </motion.div>
 
       {/* grid */}
-      <div className="max-w-6xl mx-auto grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="relative z-10 max-w-6xl mx-auto grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((project, index) => (
           <motion.a
             key={index}
@@ -58,9 +81,10 @@ export default function Projects() {
             transition={{ delay: index * 0.15 }}
             whileHover={{ y: -12 }}
             className="
-              group bg-white rounded-3xl p-8
-              border border-sky-100
-              shadow-lg hover:shadow-2xl
+              group backdrop-blur-xl bg-white/60
+              rounded-3xl p-8
+              border border-white/40
+              shadow-xl hover:shadow-2xl
               transition-all duration-300
             "
           >
@@ -68,9 +92,10 @@ export default function Projects() {
             <div
               className="
                 w-16 h-16 mb-6 rounded-2xl
-                bg-sky-100 flex items-center justify-center
+                bg-gradient-to-tr from-pink-200 to-sky-200
+                flex items-center justify-center
                 text-3xl
-                group-hover:bg-sky-500
+                group-hover:from-pink-500 group-hover:to-sky-500
                 group-hover:scale-110
                 transition-all duration-300
               "
@@ -81,12 +106,12 @@ export default function Projects() {
             </div>
 
             {/* title */}
-            <h3 className="text-xl font-semibold text-sky-700 mb-2">
+            <h3 className="text-xl font-semibold text-gray-800 mb-2">
               {project.title}
             </h3>
 
             {/* description */}
-            <p className="text-sm text-sky-600 mb-6 leading-relaxed">
+            <p className="text-sm text-gray-600 mb-6 leading-relaxed">
               {project.description}
             </p>
 
@@ -97,8 +122,9 @@ export default function Projects() {
                   key={i}
                   className="
                     text-xs px-3 py-1 rounded-full
-                    bg-sky-50 text-sky-600
-                    border border-sky-100
+                    bg-white/70 backdrop-blur
+                    text-sky-600
+                    border border-white/40
                   "
                 >
                   {t}
@@ -110,30 +136,17 @@ export default function Projects() {
             <span
               className="
                 inline-flex items-center gap-2
-                text-sm font-medium text-sky-500
-                group-hover:text-sky-700
-                transition
+                text-sm font-medium
+                bg-gradient-to-r from-pink-500 to-sky-500
+                bg-clip-text text-transparent
+                group-hover:opacity-80 transition
               "
             >
-              View on GitHub
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="size-4"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
-                />
-              </svg>
+              View on GitHub →
             </span>
           </motion.a>
         ))}
       </div>
     </section>
-  )
+  );
 }
