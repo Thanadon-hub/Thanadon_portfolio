@@ -109,7 +109,7 @@ export default function Home() {
         transition={{ duration: 2, repeat: Infinity }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 text-sky-500 text-xs tracking-[0.3em]"
       >
-        SCROLL
+        Thanadon.com🌎
       </motion.div>
     </section>
   );
