@@ -94,7 +94,7 @@ export default function Home() {
               bg-gradient-to-tr from-pink-400 via-purple-400 to-sky-400
               opacity-40 rounded-full blur-2xl animate-pulse" />
             <img
-              src="/github.jpg"
+              src="/pro.jpg"
               alt="profile"
               className="relative w-72 h-72 md:w-80 md:h-80
               rounded-full object-cover shadow-2xl border-4 border-white"
