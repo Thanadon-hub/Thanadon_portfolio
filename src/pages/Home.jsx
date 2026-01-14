@@ -36,15 +36,28 @@ export default function Home() {
           >
             Hi, I'm Thanadon
           </motion.h2>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="inline-flex items-center gap-3
+    mb-6 px-4 py-2 rounded-full
+    bg-white/70 backdrop-blur
+    border border-white/40
+    text-sm font-medium text-sky-600"
+          >
+            💻 Network & IT Support 
+          </motion.div>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
+            transition={{ delay: 0.35, duration: 0.8 }}
             className="text-gray-700 text-lg md:text-xl mb-10 leading-relaxed"
           >
-            This website was created to introduce myself and showcase my
-            previous work. Feel free to explore and learn more about me!
+            I am a technology enthusiast with a strong interest in Network
+            systems, IT Support, and Web development. This website showcases my
+            background, skills, and selected projects.
           </motion.p>
 
           <motion.div
@@ -55,22 +68,29 @@ export default function Home() {
           >
             <a
               href="/about"
-              className="px-10 py-4 rounded-full font-semibold
-              bg-gradient-to-r from-pink-500 to-sky-500 text-white
-              shadow-lg shadow-pink-500/30
-              hover:scale-105 hover:shadow-xl
-              transition-all duration-300
-              inline-flex items-center gap-2"
+              className="
+    group relative px-10 py-4 rounded-full font-semibold
+    bg-gradient-to-r from-pink-500 to-sky-500 text-white
+    shadow-lg shadow-pink-500/30
+    hover:shadow-xl hover:scale-105
+    transition-all duration-300
+    inline-flex items-center gap-2
+    overflow-hidden
+  "
             >
-              About Me →
+              <span className="relative z-10">About Me</span>
+              <span className="group-hover:translate-x-1 transition">→</span>
             </a>
 
             <a
               href="/contact"
-              className="px-10 py-4 rounded-full font-semibold
-              border border-purple-300 text-purple-600
-              hover:bg-purple-100
-              hover:scale-105 transition-all duration-300"
+              className="
+    px-10 py-4 rounded-full font-semibold
+    bg-white/60 backdrop-blur
+    border border-white/40 text-sky-600
+    hover:bg-white/90 hover:scale-105
+    transition-all duration-300
+  "
             >
               Contact Me
             </a>
