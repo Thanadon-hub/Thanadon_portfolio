@@ -5,9 +5,10 @@ export default function Resume() {
   const [open, setOpen] = useState(false);
 
   return (
-    <section className="relative min-h-screen py-24 px-6
-      bg-gradient-to-br from-sky-50 via-white to-purple-50 overflow-hidden">
-
+    <section
+      className="relative min-h-screen py-24 px-6
+      bg-gradient-to-br from-sky-50 via-white to-purple-50 overflow-hidden"
+    >
       {/* background blobs */}
       <motion.div
         animate={{ y: [0, -30, 0], x: [0, 20, 0] }}
@@ -26,7 +27,6 @@ export default function Resume() {
       />
 
       <div className="relative z-10 max-w-6xl mx-auto">
-
         {/* title */}
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
@@ -41,10 +41,8 @@ export default function Resume() {
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-
           {/* LEFT: content */}
           <div className="md:col-span-2 space-y-10">
-
             {/* Education */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -59,9 +57,8 @@ export default function Resume() {
               <p className="text-gray-700">
                 -Chumphon Technical College Computer Technology 2019-2021 <br />
                 -Chumphon Technical College Computer Hardware 2021-2023 <br />
-                -King mongkut's university of technology north bangkok <br /> 
-                 Bachelor's Degree in Electronic computer technology 2024-Present
-                
+                -King mongkut's university of technology north bangkok <br />
+                Bachelor's Degree in Electronic computer technology 2024-Present
               </p>
             </motion.div>
 
@@ -129,7 +126,6 @@ export default function Resume() {
             className="md:col-span-1"
           >
             <div className="sticky top-28 space-y-6">
-
               {/* image */}
               <div
                 onClick={() => setOpen(true)}
@@ -140,7 +136,7 @@ export default function Resume() {
                 hover:shadow-2xl transition"
               >
                 <img
-                  src="/github.jpg"
+                  src="/Resume_in.jpg"
                   alt="Resume"
                   className="rounded-2xl w-full
                   hover:scale-105 transition-transform duration-300"
@@ -152,7 +148,7 @@ export default function Resume() {
 
               {/* download */}
               <motion.a
-                href="/student.pdf"
+                href="/Resume_thai.pdf"
                 download
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
@@ -168,8 +164,10 @@ export default function Resume() {
               </motion.a>
 
               {/* info */}
-              <div className="backdrop-blur-xl bg-white/60
-                rounded-3xl shadow-xl p-6 border border-white/40">
+              <div
+                className="backdrop-blur-xl bg-white/60
+                rounded-3xl shadow-xl p-6 border border-white/40"
+              >
                 <h4 className="font-semibold text-sky-700 mb-3">
                   📄 Resume Info
                 </h4>
@@ -179,7 +177,6 @@ export default function Resume() {
                   <li>• Size: 1.2 MB</li>
                 </ul>
               </div>
-
             </div>
           </motion.div>
         </div>
@@ -199,7 +196,7 @@ export default function Resume() {
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.9, opacity: 0 }}
-                className="relative max-w-4xl w-full"
+                className="relative w-full max-w-5xl max-h-[90vh] overflow-y-auto rounded-2xl"
                 onClick={(e) => e.stopPropagation()}
               >
                 <button
@@ -213,15 +210,14 @@ export default function Resume() {
                 </button>
 
                 <img
-                  src="/github.jpg"
+                  src="/Resume_in.jpg"
                   alt="Resume Full"
-                  className="w-full rounded-2xl shadow-2xl"
+                  className="w-full h-auto rounded-2xl shadow-2xl"
                 />
               </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
-
       </div>
     </section>
   );
