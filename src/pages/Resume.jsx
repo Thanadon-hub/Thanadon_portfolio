@@ -179,7 +179,7 @@ export default function Resume() {
                 "
               >
                 <img
-                  src="/Resume_in.jpg"
+                  src="/_Resume_thanadon.jpg"
                   alt="Resume"
                   className="
                     rounded-2xl w-full
@@ -194,7 +194,7 @@ export default function Resume() {
 
               {/* download */}
               <motion.a
-                href="/Resume_thai.pdf"
+                href="/_Resume_thanadon.pdf"
                 download
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
@@ -273,7 +273,7 @@ export default function Resume() {
                 </button>
 
                 <img
-                  src="/Resume_in.jpg"
+                  src="/_Resume_thanadon.jpg"
                   alt="Resume Full"
                   className="w-full h-auto rounded-2xl shadow-2xl"
                 />

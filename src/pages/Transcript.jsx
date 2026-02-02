@@ -142,7 +142,7 @@ export default function Transcript() {
           <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            href="/student.pdf"
+            href="/Transcript.pdf"
             download
             className="
               w-full sm:w-auto
@@ -168,7 +168,7 @@ export default function Transcript() {
             </div>
             <div>
               <p className="font-semibold text-sky-700">GPA</p>
-              <p>2.86</p>
+              <p>2.83</p>
             </div>
           </div>
         </div>
