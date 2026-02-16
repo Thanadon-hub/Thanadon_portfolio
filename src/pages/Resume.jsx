@@ -1,80 +1,70 @@
-import React, { useState } from "react";
+import React from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Resume() {
   const [open, setOpen] = useState(false);
 
   return (
-    <section
-      className="
-        relative min-h-screen
-        px-6
-        pt-28 md:pt-24
-        pb-32 md:pb-24
-        bg-gradient-to-br from-sky-50 via-white to-purple-50
-        overflow-hidden
-      "
-    >
-      {/* background blobs */}
-      <motion.div
-        animate={{ y: [0, -30, 0], x: [0, 20, 0] }}
-        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+    <section className="relative min-h-screen bg-[#0b0d12] text-slate-200 overflow-hidden">
+
+      {/* subtle background texture */}
+      <div
         className="
-          absolute -top-32 -left-32
-          w-[22rem] h-[22rem] sm:w-[28rem] sm:h-[28rem]
-          bg-gradient-to-tr from-pink-400 via-purple-400 to-sky-400
-          opacity-30 rounded-full blur-3xl
+          absolute inset-0 opacity-[0.04]
+          bg-[radial-gradient(circle_at_1px_1px,white_1px,transparent_0)]
+          [background-size:24px_24px]
         "
       />
 
-      <motion.div
-        animate={{ y: [0, 30, 0], x: [0, -20, 0] }}
-        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+      <div
         className="
-          absolute -bottom-32 -right-32
-          w-[24rem] h-[24rem] sm:w-[30rem] sm:h-[30rem]
-          bg-gradient-to-tr from-sky-300 via-cyan-300 to-purple-300
-          opacity-30 rounded-full blur-3xl
+          relative z-10
+          max-w-6xl mx-auto
+          px-4 sm:px-6 lg:px-8
+          pt-28 pb-32
         "
-      />
-
-      <div className="relative z-10 max-w-6xl mx-auto">
-        {/* title */}
-        <motion.h2
+      >
+        {/* ===== TITLE ===== */}
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="
-            text-center mb-12 sm:mb-16
-            text-3xl sm:text-4xl md:text-5xl
-            font-extrabold
-            bg-gradient-to-r from-pink-500 via-purple-500 to-sky-500
-            bg-clip-text text-transparent
-          "
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20"
         >
-          Resume
-        </motion.h2>
+          
+          <h2 className="
+            text-4xl sm:text-5xl lg:text-6xl
+            font-semibold tracking-tight
+          ">
+            RESUME
+          </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
-          {/* LEFT: content */}
-          <div className="md:col-span-2 space-y-8 sm:space-y-10">
-            {/* Education */}
+          <div className="h-px w-20 bg-cyan-400 mx-auto mt-6" />
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-14">
+
+          {/* ===== LEFT : CONTENT ===== */}
+          <div className="md:col-span-2 space-y-10">
+
+            {/* EDUCATION */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
               className="
-                backdrop-blur-xl bg-white/60
-                rounded-3xl
-                shadow-xl
+                rounded-2xl
+                border border-slate-700
+                bg-white/5
                 p-6 sm:p-8
-                border border-white/40
               "
             >
-              <h3 className="text-lg sm:text-xl font-semibold text-sky-600 mb-4">
-                🎓 Education
+              <h3 className="text-lg sm:text-xl font-semibold text-cyan-400 mb-4">
+                Education
               </h3>
-              <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
+              <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
                 Chumphon Technical College – Computer Technology (2019–2021)
                 <br />
                 Chumphon Technical College – Computer Hardware (2021–2023)
@@ -86,43 +76,41 @@ export default function Resume() {
               </p>
             </motion.div>
 
-            {/* Skills */}
+            {/* SKILLS */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.35 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
               className="
-                backdrop-blur-xl bg-white/60
-                rounded-3xl
-                shadow-xl
+                rounded-2xl
+                border border-slate-700
+                bg-white/5
                 p-6 sm:p-8
-                border border-white/40
               "
             >
-              <h3 className="text-lg sm:text-xl font-semibold text-sky-600 mb-6">
-                💻 Skills
+              <h3 className="text-lg sm:text-xl font-semibold text-cyan-400 mb-6">
+                Skills
               </h3>
 
               <div className="flex flex-wrap gap-3">
                 {[
                   "C / C++",
                   "JavaScript",
-                  "Tailwind CSS",
                   "HTML / CSS",
+                  "Tailwind CSS",
                   "LAN / Wi-Fi Setup",
-                  "Network Configuration (Basic)",
-                  "Switch Configuration (Layer 2, Layer 3)",
+                  "Basic Network Configuration",
+                  "Layer 2 / Layer 3 Switch",
                 ].map((skill) => (
                   <span
                     key={skill}
                     className="
-                      px-4 py-2 rounded-full
-                      bg-white/70 backdrop-blur
-                      text-sky-700 text-xs sm:text-sm font-medium
-                      border border-sky-200
-                      ring-1 ring-sky-200/50
-                      hover:ring-sky-400 hover:shadow-md
-                      transition-all duration-300
+                      text-xs sm:text-sm
+                      px-4 py-2
+                      rounded-full
+                      border border-slate-700
+                      text-slate-300
                     "
                   >
                     {skill}
@@ -131,98 +119,95 @@ export default function Resume() {
               </div>
             </motion.div>
 
-            {/* Experience */}
+            {/* EXPERIENCE */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
               className="
-                backdrop-blur-xl bg-white/60
-                rounded-3xl
-                shadow-xl
+                rounded-2xl
+                border border-slate-700
+                bg-white/5
                 p-6 sm:p-8
-                border border-white/40
               "
             >
-              <h3 className="text-lg sm:text-xl font-semibold text-sky-600 mb-4">
-                🛠 Experience
+              <h3 className="text-lg sm:text-xl font-semibold text-cyan-400 mb-4">
+                Experience
               </h3>
 
-              <ul className="space-y-3 text-gray-700 text-sm sm:text-base">
+              <ul className="space-y-3 text-slate-300 text-sm sm:text-base">
                 <li>• Smart Farm Dashboard (Flutter & Firebase)</li>
-                <li>• IoT projects with ESP8266 / ESP32</li>
-                <li>• Frontend integration with Firebase & APIs</li>
+                <li>• IoT projects using ESP8266 / ESP32</li>
+                <li>• Frontend integration with Firebase & REST APIs</li>
               </ul>
             </motion.div>
           </div>
 
-          {/* RIGHT: preview */}
+          {/* ===== RIGHT : PREVIEW ===== */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2 }}
+            transition={{ duration: 0.8 }}
             className="md:col-span-1"
           >
             <div className="sticky top-28 space-y-6">
-              {/* image */}
+
+              {/* PREVIEW */}
               <div
                 onClick={() => setOpen(true)}
                 className="
                   cursor-zoom-in
-                  backdrop-blur-xl bg-white/60
-                  rounded-3xl
-                  shadow-xl
+                  rounded-2xl
+                  border border-slate-700
+                  bg-white/5
                   p-4
-                  border border-white/40
-                  hover:shadow-2xl
                   transition
+                  hover:border-slate-500
                 "
               >
                 <img
                   src="/_Resume_thanadon.jpg"
-                  alt="Resume"
-                  className="
-                    rounded-2xl w-full
-                    hover:scale-105
-                    transition-transform duration-300
-                  "
+                  alt="Resume Preview"
+                  className="rounded-xl w-full"
                 />
-                <p className="text-center text-sm text-sky-500 mt-3">
-                  👆 Tap to preview
+                <p className="text-center text-xs text-slate-500 mt-3">
+                  Click to preview
                 </p>
               </div>
 
-              {/* download */}
+              {/* DOWNLOAD */}
               <motion.a
                 href="/_Resume_thanadon.pdf"
                 download
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 className="
-                  flex items-center justify-center gap-3
-                  w-full py-4 rounded-xl font-semibold
-                  bg-gradient-to-r from-pink-500 to-sky-500
-                  text-white shadow-lg shadow-pink-500/30
-                  hover:shadow-xl transition-all
+                  flex items-center justify-center
+                  w-full py-4
+                  rounded-xl
+                  font-medium
+                  bg-cyan-500 text-black
+                  hover:bg-cyan-400
+                  transition
                 "
               >
-                ⬇️ Download Resume (PDF)
+                Download Resume (PDF)
               </motion.a>
 
-              {/* info */}
+              {/* INFO */}
               <div
                 className="
-                  backdrop-blur-xl bg-white/60
-                  rounded-3xl
-                  shadow-xl
+                  rounded-2xl
+                  border border-slate-700
+                  bg-white/5
                   p-6
-                  border border-white/40
                 "
               >
-                <h4 className="font-semibold text-sky-700 mb-3">
-                  📄 Resume Info
+                <h4 className="font-medium text-slate-200 mb-3">
+                  Resume Info
                 </h4>
-                <ul className="space-y-2 text-sm text-gray-600">
+                <ul className="space-y-2 text-sm text-slate-400">
                   <li>• Updated: January 2026</li>
                   <li>• Format: PDF (1 page)</li>
                   <li>• Size: 1.2 MB</li>
@@ -231,57 +216,60 @@ export default function Resume() {
             </div>
           </motion.div>
         </div>
-
-        {/* modal preview */}
-        <AnimatePresence>
-          {open && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="
-                fixed inset-0 z-50
-                bg-black/70 backdrop-blur-sm
-                flex items-start justify-center
-                pt-24 px-4 pb-8
-              "
-              onClick={() => setOpen(false)}
-            >
-              <motion.div
-                initial={{ scale: 0.95, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.95, opacity: 0 }}
-                className="
-                  relative w-full max-w-5xl
-                  max-h-[calc(100vh-8rem)]
-                  overflow-y-auto
-                  rounded-2xl
-                "
-                onClick={(e) => e.stopPropagation()}
-              >
-                <button
-                  onClick={() => setOpen(false)}
-                  className="
-                    sticky top-4 ml-auto
-                    w-10 h-10
-                    rounded-full bg-white
-                    text-sky-600 shadow-lg
-                    hover:scale-110 transition
-                  "
-                >
-                  ✕
-                </button>
-
-                <img
-                  src="/_Resume_thanadon.jpg"
-                  alt="Resume Full"
-                  className="w-full h-auto rounded-2xl shadow-2xl"
-                />
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
+
+      {/* ===== MODAL PREVIEW ===== */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="
+              fixed inset-0 z-50
+              bg-black/80 backdrop-blur-sm
+              flex items-start justify-center
+              pt-24 px-4 pb-8
+            "
+            onClick={() => setOpen(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              className="
+                relative w-full max-w-5xl
+                max-h-[calc(100vh-8rem)]
+                overflow-y-auto
+                rounded-2xl
+              "
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setOpen(false)}
+                className="
+                  sticky top-4 ml-auto
+                  w-10 h-10
+                  rounded-full
+                  bg-[#0b0d12]
+                  border border-slate-700
+                  text-slate-300
+                  hover:text-cyan-400
+                  transition
+                "
+              >
+                ✕
+              </button>
+
+              <img
+                src="/_Resume_thanadon.jpg"
+                alt="Resume Full"
+                className="w-full h-auto rounded-2xl shadow-2xl"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

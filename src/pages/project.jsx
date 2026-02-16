@@ -29,150 +29,125 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section
-      className="
-        relative min-h-screen
-        px-6
-        pt-28 md:pt-24
-        pb-32 md:pb-24
-        bg-gradient-to-br from-sky-50 via-white to-purple-50
-        overflow-hidden
-      "
-    >
-      {/* background blobs */}
-      <motion.div
-        animate={{ y: [0, -30, 0], x: [0, 20, 0] }}
-        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-        className="
-          absolute -top-32 -left-32
-          w-[22rem] h-[22rem] sm:w-[28rem] sm:h-[28rem]
-          bg-gradient-to-tr from-pink-400 via-purple-400 to-sky-400
-          opacity-30 rounded-full blur-3xl
-        "
-      />
+    <section className="relative min-h-screen bg-[#0b0d12] text-slate-200 overflow-hidden">
 
-      <motion.div
-        animate={{ y: [0, 30, 0], x: [0, -20, 0] }}
-        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
-        className="
-          absolute -bottom-32 -right-32
-          w-[24rem] h-[24rem] sm:w-[30rem] sm:h-[30rem]
-          bg-gradient-to-tr from-sky-300 via-cyan-300 to-purple-300
-          opacity-30 rounded-full blur-3xl
-        "
-      />
-
-      {/* title */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        className="relative z-10 text-center mb-14 sm:mb-20"
-      >
-        <h2
-          className="
-            text-3xl sm:text-4xl md:text-5xl
-            font-extrabold mb-3
-            bg-gradient-to-r from-pink-500 via-purple-500 to-sky-500
-            bg-clip-text text-transparent
-          "
-        >
-          Projects <br className="sm:hidden" /> & Works
-        </h2>
-        <p className="text-gray-600 text-sm sm:text-base">
-          Selected works & personal projects
-        </p>
-      </motion.div>
-
-      {/* grid */}
+      {/* subtle background texture */}
       <div
         className="
-          relative z-10
-          max-w-6xl mx-auto
-          grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3
-          gap-6 sm:gap-10
+          absolute inset-0 opacity-[0.04]
+          bg-[radial-gradient(circle_at_1px_1px,white_1px,transparent_0)]
+          [background-size:24px_24px]
         "
-      >
-        {projects.map((project, index) => (
-          <motion.a
-            key={index}
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.12 }}
-            whileHover={{ y: -10 }}
-            whileTap={{ scale: 0.97 }}
-            className="
-              group
-              backdrop-blur-xl bg-white/60
-              rounded-3xl
-              p-6 sm:p-8
-              border border-white/40
-              shadow-xl hover:shadow-2xl
-              transition-all duration-300
-            "
-          >
-            {/* icon */}
-            <div
+      />
+
+      <div className="relative z-10 max-w-6xl mx-auto
+        px-4 sm:px-6 lg:px-8
+        pt-28 pb-32">
+
+        {/* ===== TITLE ===== */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16 sm:mb-20"
+        >
+          <p className="text-xs tracking-[0.35em] text-slate-500 mb-4">
+            PROJECTS
+          </p>
+
+          <h2 className="
+            text-4xl sm:text-5xl lg:text-6xl
+            font-semibold tracking-tight
+          ">
+            Selected Works
+          </h2>
+
+          <div className="h-px w-20 bg-cyan-400 mx-auto mt-6" />
+
+          <p className="mt-6 text-slate-400 max-w-xl mx-auto">
+            A selection of personal and academic projects
+            focused on web, system, and IoT development.
+          </p>
+        </motion.div>
+
+        {/* ===== GRID ===== */}
+        <div className="
+          grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3
+          gap-8 lg:gap-12
+        ">
+          {projects.map((project, index) => (
+            <motion.a
+              key={index}
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.12, duration: 0.6 }}
+              whileHover={{ y: -6 }}
               className="
-                w-14 h-14 sm:w-16 sm:h-16
-                mb-6 rounded-2xl
-                bg-gradient-to-tr from-pink-200 to-sky-200
-                flex items-center justify-center
-                text-2xl sm:text-3xl
-                group-hover:from-pink-500 group-hover:to-sky-500
-                group-hover:scale-110
-                transition-all duration-300
+                group
+                rounded-2xl
+                border border-slate-700
+                bg-white/5
+                p-6 sm:p-8
+                transition
+                hover:border-slate-500
               "
             >
-              <span className="group-hover:text-white transition">
+              {/* ICON */}
+              <div className="
+                w-14 h-14 mb-6
+                rounded-xl
+                bg-cyan-400/10
+                flex items-center justify-center
+                text-2xl
+                transition
+                group-hover:bg-cyan-400/20
+              ">
                 {project.icon}
-              </span>
-            </div>
+              </div>
 
-            {/* title */}
-            <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-2">
-              {project.title}
-            </h3>
+              {/* TITLE */}
+              <h3 className="text-lg sm:text-xl font-semibold mb-2">
+                {project.title}
+              </h3>
 
-            {/* description */}
-            <p className="text-sm text-gray-600 mb-6 leading-relaxed">
-              {project.description}
-            </p>
+              {/* DESCRIPTION */}
+              <p className="text-sm sm:text-base text-slate-400 mb-6 leading-relaxed">
+                {project.description}
+              </p>
 
-            {/* tech */}
-            <div className="flex flex-wrap gap-2 mb-8">
-              {project.tech.map((t, i) => (
-                <span
-                  key={i}
-                  className="
-                    text-xs px-3 py-1 rounded-full
-                    bg-white/70 backdrop-blur
-                    text-sky-600
-                    border border-white/40
-                  "
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
+              {/* TECH */}
+              <div className="flex flex-wrap gap-2 mb-8">
+                {project.tech.map((t, i) => (
+                  <span
+                    key={i}
+                    className="
+                      text-xs px-3 py-1 rounded-full
+                      border border-slate-700
+                      text-slate-300
+                    "
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
 
-            {/* link */}
-            <span
-              className="
+              {/* LINK */}
+              <span className="
                 inline-flex items-center gap-2
                 text-sm font-medium
-                bg-gradient-to-r from-pink-500 to-sky-500
-                bg-clip-text text-transparent
-                group-hover:opacity-80 transition
-              "
-            >
-              View on GitHub →
-            </span>
-          </motion.a>
-        ))}
+                text-cyan-400
+                group-hover:text-cyan-300
+                transition
+              ">
+                View on GitHub →
+              </span>
+            </motion.a>
+          ))}
+        </div>
       </div>
     </section>
   );

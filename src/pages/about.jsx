@@ -3,157 +3,148 @@ import { motion } from "framer-motion";
 
 export default function About() {
   return (
-    <section
-      className="
-        relative min-h-screen
-        px-6
-        pt-28 md:pt-24
-        pb-32 md:pb-24
-        bg-gradient-to-br from-sky-50 via-white to-purple-50
-        overflow-hidden
-      "
-    >
-      {/* background blobs */}
-      <motion.div
-        animate={{ y: [0, -30, 0], x: [0, 20, 0] }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        className="
-          absolute -top-32 -left-32
-          w-[22rem] h-[22rem] sm:w-[26rem] sm:h-[26rem]
-          bg-gradient-to-tr from-pink-400 via-purple-400 to-sky-400
-          opacity-30 rounded-full blur-3xl
-        "
-      />
+    <section className="relative min-h-screen bg-[#0b0d12] text-slate-200 overflow-hidden">
 
-      <motion.div
-        animate={{ y: [0, 30, 0], x: [0, -20, 0] }}
-        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+      {/* subtle background texture */}
+      <div
         className="
-          absolute -bottom-32 -right-32
-          w-[24rem] h-[24rem] sm:w-[28rem] sm:h-[28rem]
-          bg-gradient-to-tr from-sky-300 via-cyan-300 to-purple-300
-          opacity-30 rounded-full blur-3xl
+          absolute inset-0 opacity-[0.04]
+          bg-[radial-gradient(circle_at_1px_1px,white_1px,transparent_0)]
+          [background-size:24px_24px]
         "
       />
 
       <div
         className="
           relative z-10
-          max-w-5xl mx-auto
-          grid grid-cols-1 md:grid-cols-2
-          gap-12 md:gap-16
-          items-center
+          max-w-6xl mx-auto
+          px-4 sm:px-6 lg:px-8
+          pt-28 pb-32
         "
       >
-        {/* LEFT: text */}
-        <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7 }}
+        <div
           className="
-            backdrop-blur-xl bg-white/60
-            rounded-3xl
-            p-6 sm:p-8 md:p-10
-            shadow-xl border border-white/40
+            grid grid-cols-1 md:grid-cols-2
+            gap-16 lg:gap-24
+            items-center
           "
         >
-          <h2
-            className="
-              text-3xl sm:text-4xl md:text-5xl
-              font-extrabold mb-6
-              bg-gradient-to-r from-pink-500 via-purple-500 to-sky-500
-              bg-clip-text text-transparent
-            "
+          {/* ===== LEFT : TEXT ===== */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="space-y-6 text-center md:text-left"
           >
-            About Me
-          </h2>
+            <p className="text-xs tracking-[0.35em] text-slate-500">
+              ABOUT
+            </p>
 
-          <p className="text-gray-700 leading-relaxed mb-6 text-sm sm:text-base">
-            I’m a passionate frontend developer who enjoys crafting clean,
-            modern and user-friendly web interfaces. I care deeply about
-            usability, performance, and thoughtful design.
-          </p>
+            <h2 className="
+              text-4xl sm:text-5xl lg:text-6xl
+              font-semibold tracking-tight
+            ">
+              About Me
+            </h2>
 
-          <p className="text-gray-700 leading-relaxed mb-8 sm:mb-10 text-sm sm:text-base">
-            My background also includes IoT systems and real-world projects,
-            which helps me design software that connects seamlessly between
-            hardware and the web.
-          </p>
+            {/* accent line */}
+            <div className="h-px w-16 bg-cyan-400 mx-auto md:mx-0" />
 
-          {/* highlights */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-            {[
-              {
-                label: "Frontend Focus",
-                value: "C++ / React / UI / HTML / Tailwind",
-              },
-              { label: "Experience", value: "Web & IoT" },
-              { label: "Design Style", value: "Minimal & Clean" },
-              {
-                label: "Mindset",
-                value: "I enjoy learning new things.",
-              },
-            ].map((item, i) => (
+            <p className="text-slate-400 text-base sm:text-lg leading-relaxed max-w-xl mx-auto md:mx-0">
+              I am a technology enthusiast with a strong interest in
+              <span className="text-slate-200"> network systems</span>,
+              <span className="text-slate-200"> IT support</span>, and
+              <span className="text-slate-200"> web development</span>.
+              I focus on building reliable, structured, and practical solutions.
+            </p>
+
+            <p className="text-slate-400 text-base sm:text-lg leading-relaxed max-w-xl mx-auto md:mx-0">
+              My experience includes real-world projects and continuous learning,
+              helping me adapt quickly and work effectively in technical environments.
+            </p>
+
+            {/* HIGHLIGHTS */}
+            <div
+              className="
+                grid grid-cols-1 sm:grid-cols-2
+                gap-4 pt-6
+                text-left
+              "
+            >
+              {[
+                { label: "Focus", value: "Network & IT Support" },
+                { label: "Skills", value: "React · HTML · Tailwind · Basic C++" },
+                { label: "Experience", value: "Web & System Support" },
+                { label: "Mindset", value: "Continuous Learning" },
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className="
+                    rounded-xl
+                    border border-slate-700
+                    bg-white/5
+                    px-5 py-4
+                    transition
+                    hover:border-slate-500
+                  "
+                >
+                  <p className="text-xs tracking-wide text-slate-500">
+                    {item.label}
+                  </p>
+                  <p className="text-slate-200 font-medium">
+                    {item.value}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* ===== RIGHT : IMAGE ===== */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            className="flex justify-center md:justify-end"
+          >
+            <div className="relative">
+
+              {/* soft glow */}
               <div
-                key={i}
                 className="
-                  bg-white/70 backdrop-blur-md
-                  rounded-xl
-                  p-4
-                  border border-white/40
-                  shadow-md hover:shadow-lg
-                  hover:-translate-y-1
-                  transition-all duration-300
+                  absolute -inset-6 rounded-2xl
+                  bg-cyan-500/15 blur-3xl
+                "
+              />
+
+              <div
+                className="
+                  relative
+                  w-56 h-72
+                  sm:w-64 sm:h-80
+                  md:w-72 md:h-96
+                  rounded-2xl overflow-hidden
+                  border border-slate-700
+                  shadow-[0_30px_80px_rgba(0,0,0,0.6)]
+                  transition-transform duration-700
+                  hover:-translate-y-2
                 "
               >
-                <p className="text-xs sm:text-sm text-sky-500">
-                  {item.label}
-                </p>
-                <p className="font-semibold text-sky-700 text-sm sm:text-base">
-                  {item.value}
-                </p>
+                <img
+                  src="/TYu.jpg"
+                  alt="Profile"
+                  className="
+                    w-full h-full object-cover
+                    brightness-95 contrast-105
+                  "
+                />
               </div>
-            ))}
-          </div>
-        </motion.div>
 
-        {/* RIGHT: avatar */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7 }}
-          className="relative flex justify-center"
-        >
-          {/* glow */}
-          <div
-            className="
-              absolute
-              w-64 h-64 sm:w-80 sm:h-80 md:w-[26rem] md:h-[26rem]
-              rounded-full
-              blur-3xl opacity-40
-              bg-gradient-to-tr from-pink-400 via-purple-400 to-sky-400
-            "
-          />
-
-          {/* avatar */}
-          <div
-            className="
-              relative
-              w-64 h-64 sm:w-72 sm:h-72 md:w-96 md:h-96
-              rounded-3xl overflow-hidden
-              border border-white/40
-              shadow-2xl bg-white
-              transition-transform duration-500
-              hover:scale-105
-            "
-          >
-            <img
-              src="/TYu.jpg"
-              alt="Profile"
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </motion.div>
+              <p className="mt-4 text-xs tracking-wide text-slate-500 text-center">
+                Network & IT Support
+              </p>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

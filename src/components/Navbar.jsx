@@ -1,127 +1,160 @@
-import React, { useState } from "react";
+import React from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   const links = [
-    { path: "/", label: "Home" },
-    { path: "/about", label: "About" },
-    { path: "/projects", label: "Projects" },
-    { path: "/resume", label: "Resume" },
-    { path: "/transcript", label: "Transcript" },
-    { path: "/contact", label: "Contact" },
+    { path: "/", label: "Home", icon: "🏠" },
+    { path: "/about", label: "About", icon: "👤" },
+    { path: "/projects", label: "Projects", icon: "🧩" },
+    { path: "/resume", label: "Resume", icon: "📄" },
+    { path: "/transcript", label: "Transcript", icon: "🎓" },
+    { path: "/contact", label: "Contact", icon: "✉️" },
   ];
 
   return (
-    <nav className="sticky top-0 z-50 backdrop-blur bg-white/60 border-b border-white/40">
-      <div
-        className="
-          mx-auto max-w-6xl
+    <>
+      {/* ===== DESKTOP SIDEBAR ===== */}
+      <aside className="hidden md:flex fixed top-0 left-0 h-screen w-64 z-50
+        bg-[#0b0d12]
+        border-r border-slate-800
+        px-6 py-8
+      ">
+        <div className="flex flex-col w-full">
+
+          {/* LOGO */}
+          <div className="mb-12">
+            <p className="text-xs tracking-[0.4em] text-slate-500">
+              PORTFOLIO
+            </p>
+            <h1 className="mt-2 text-lg font-semibold text-slate-200">
+              Thanadon
+            </h1>
+          </div>
+
+          {/* LINKS */}
+          <nav className="flex flex-col gap-2">
+            {links.map((link) => (
+              <NavLink
+                key={link.path}
+                to={link.path}
+                className={({ isActive }) =>
+                  `
+                  group flex items-center gap-4
+                  px-4 py-3 rounded-xl
+                  text-sm tracking-wide
+                  transition
+                  ${
+                    isActive
+                      ? "bg-white/5 text-cyan-400"
+                      : "text-slate-400 hover:bg-white/5 hover:text-slate-200"
+                  }
+                `
+                }
+              >
+                <span className="text-lg">{link.icon}</span>
+                {link.label}
+              </NavLink>
+            ))}
+          </nav>
+
+          {/* FOOTER */}
+          <div className="mt-auto pt-6 border-t border-slate-800">
+            <p className="text-xs text-slate-500">
+              © {new Date().getFullYear()} Thanadon
+            </p>
+          </div>
+        </div>
+      </aside>
+
+      {/* ===== MOBILE TOGGLE BUTTON ===== */}
+      <button
+        onClick={() => setOpen(true)}
+        className="md:hidden fixed top-4 left-4 z-50
+          w-11 h-11
           rounded-full
-          bg-white/70 backdrop-blur-xl
-          shadow-xl shadow-sky-200/40
-          px-6 py-4
-          flex items-center justify-between
+          bg-[#0b0d12]/90
+          border border-slate-700
+          text-slate-300
+          hover:text-cyan-400
+          transition
         "
+        aria-label="Open menu"
       >
-        {/* Logo */}
-        <h1
-          className="
-            flex items-center gap-2
-            text-lg font-extrabold
-            bg-gradient-to-r from-pink-500 via-purple-500 to-sky-500
-            bg-clip-text text-transparent
-          "
-        >
-          Thanadon.com
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-5 h-5 text-sky-500"
+        ☰
+      </button>
+
+      {/* ===== MOBILE SIDEBAR ===== */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="
+              fixed inset-0 z-50
+              bg-black/80 backdrop-blur-sm
+              flex
+            "
+            onClick={() => setOpen(false)}
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z"
-            />
-          </svg>
-        </h1>
-
-        {/* Desktop Links */}
-        <div className="hidden md:flex gap-2">
-          {links.map((link) => (
-            <NavLink
-              key={link.path}
-              to={link.path}
-              className={({ isActive }) =>
-                `
-                px-4 py-2 rounded-full text-sm font-medium
-                transition-all duration-300
-                ${
-                  isActive
-                    ? "bg-gradient-to-r from-pink-500 to-sky-500 text-white shadow-md scale-105"
-                    : "text-gray-600 hover:bg-white/70 hover:text-sky-600 hover:scale-105"
-                }
-              `
-              }
+            <motion.aside
+              initial={{ x: -260 }}
+              animate={{ x: 0 }}
+              exit={{ x: -260 }}
+              transition={{ type: "spring", stiffness: 120 }}
+              className="
+                w-64 h-full
+                bg-[#0b0d12]
+                border-r border-slate-800
+                px-6 py-8
+              "
+              onClick={(e) => e.stopPropagation()}
             >
-              {link.label}
-            </NavLink>
-          ))}
-        </div>
+              <div className="flex justify-between items-center mb-10">
+                <h2 className="text-lg font-semibold text-slate-200">
+                  Thanadon
+                </h2>
+                <button
+                  onClick={() => setOpen(false)}
+                  className="text-slate-400 hover:text-cyan-400 transition"
+                >
+                  ✕
+                </button>
+              </div>
 
-        {/* Mobile Button */}
-        <button
-          onClick={() => setOpen(!open)}
-          className="md:hidden w-10 h-10 rounded-full
-            bg-white/70 backdrop-blur
-            flex items-center justify-center
-            shadow hover:scale-110 transition"
-        >
-          {open ? "✕" : "☰"}
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      {open && (
-        <div
-          className="
-            md:hidden
-            mt-4 mx-4
-            rounded-3xl
-            bg-white/80 backdrop-blur-xl
-            shadow-xl
-            border border-white/40
-            p-4
-            space-y-2
-          "
-        >
-          {links.map((link) => (
-            <NavLink
-              key={link.path}
-              to={link.path}
-              onClick={() => setOpen(false)}
-              className={({ isActive }) =>
-                `
-                block text-center px-4 py-3 rounded-xl font-medium
-                transition-all
-                ${
-                  isActive
-                    ? "bg-gradient-to-r from-pink-500 to-sky-500 text-white"
-                    : "text-gray-700 hover:bg-sky-100"
-                }
-              `
-              }
-            >
-              {link.label}
-            </NavLink>
-          ))}
-        </div>
-      )}
-    </nav>
+              <nav className="flex flex-col gap-2">
+                {links.map((link) => (
+                  <NavLink
+                    key={link.path}
+                    to={link.path}
+                    onClick={() => setOpen(false)}
+                    className={({ isActive }) =>
+                      `
+                      flex items-center gap-4
+                      px-4 py-3 rounded-xl
+                      text-sm tracking-wide
+                      transition
+                      ${
+                        isActive
+                          ? "bg-white/5 text-cyan-400"
+                          : "text-slate-300 hover:bg-white/5"
+                      }
+                    `
+                    }
+                  >
+                    <span className="text-lg">{link.icon}</span>
+                    {link.label}
+                  </NavLink>
+                ))}
+              </nav>
+            </motion.aside>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
