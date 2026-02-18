@@ -112,7 +112,7 @@ export default function Navbar() {
       >
         <motion.div
           animate={open ? "open" : "closed"}
-          transition={{ duration: 0.18, ease: "easeInOut" }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
           className="relative w-6 h-6 flex items-center justify-center"
         >
           {/* TOP */}
