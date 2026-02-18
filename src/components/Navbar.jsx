@@ -18,7 +18,7 @@ export default function Navbar() {
   return (
     <>
       {/* ===== DESKTOP SIDEBAR ===== */}
-      <aside className="hidden md:flex fixed top-0 left-0 h-screen w-64 z-50
+      <aside className="hidden lg:flex fixed top-0 left-0 h-screen w-64 z-50
         bg-[#0b0d12]
         border-r border-slate-800
         px-6 py-8
