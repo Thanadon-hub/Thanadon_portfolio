@@ -130,7 +130,6 @@ export default function Navbar() {
             className="absolute w-6 h-[1.5px] bg-slate-200 rounded-full"
           />
         </motion.div>
-        transition
       </button>
 
       {/* ================= MOBILE SIDEBAR ================= */}
