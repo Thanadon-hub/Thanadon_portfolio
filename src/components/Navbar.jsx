@@ -30,18 +30,18 @@ export default function Navbar() {
   return (
     <>
       {/* ================= DESKTOP SIDEBAR ================= */}
-      <aside className="
+      <aside
+        className="
         hidden lg:flex fixed top-0 left-0 h-screen w-64 z-50
         bg-[#0b0d12]
         border-r border-slate-800
         px-6 py-8
-      ">
+      "
+      >
         <div className="flex flex-col w-full">
           {/* LOGO */}
           <div className="mb-12">
-            <p className="text-xs tracking-[0.4em] text-slate-500">
-              PORTFOLIO
-            </p>
+            <p className="text-xs tracking-[0.4em] text-slate-500">PORTFOLIO</p>
             <h1 className="mt-2 text-lg font-semibold text-slate-200">
               Thanadon
             </h1>
@@ -85,40 +85,53 @@ export default function Navbar() {
       <button
         onClick={() => setOpen((prev) => !prev)}
         className="
-          lg:hidden fixed top-4 left-4 z-50
-          w-11 h-11 rounded-full
-          bg-[#0b0d12]/90
-          border border-slate-700
-          flex items-center justify-center
-          transition
-        "
+    lg:hidden fixed top-4 left-4 z-50
+    w-12 h-12
+    rounded-full
+    bg-[#0b0d12]/80
+    border border-slate-700
+    flex items-center justify-center
+    backdrop-blur
+  "
         aria-label="Toggle menu"
       >
-        {/* HAMBURGER → X */}
         <motion.div
           animate={open ? "open" : "closed"}
-          className="relative w-5 h-5"
+          transition={{ duration: 0.2, ease: "easeInOut" }}
+          className="relative w-6 h-6"
         >
+          {/* TOP */}
           <motion.span
             variants={{
-              closed: { rotate: 0, y: 0 },
-              open: { rotate: 45, y: 6 },
+              closed: { y: -5, rotate: 0 },
+              open: { y: 0, rotate: 45 },
             }}
-            className="absolute top-0 left-0 w-5 h-[2px] bg-slate-300"
+            className="absolute left-0 right-0 mx-auto
+        h-[1.5px] w-6
+        bg-slate-200 rounded-full"
           />
+
+          {/* MIDDLE */}
           <motion.span
             variants={{
               closed: { opacity: 1 },
               open: { opacity: 0 },
             }}
-            className="absolute top-[6px] left-0 w-5 h-[2px] bg-slate-300"
+            transition={{ duration: 0.15 }}
+            className="absolute left-0 right-0 top-1/2 -translate-y-1/2 mx-auto
+        h-[1.5px] w-6
+        bg-slate-200 rounded-full"
           />
+
+          {/* BOTTOM */}
           <motion.span
             variants={{
-              closed: { rotate: 0, y: 12 },
-              open: { rotate: -45, y: 6 },
+              closed: { y: 5, rotate: 0 },
+              open: { y: 0, rotate: -45 },
             }}
-            className="absolute top-0 left-0 w-5 h-[2px] bg-slate-300"
+            className="absolute left-0 right-0 mx-auto
+        h-[1.5px] w-6
+        bg-slate-200 rounded-full"
           />
         </motion.div>
       </button>
