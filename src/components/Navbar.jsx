@@ -84,31 +84,31 @@ export default function Navbar() {
       {/* ================= MOBILE BUTTON ================= */}
       <button
         onClick={() => setOpen((prev) => !prev)}
-        className="
-    lg:hidden fixed top-4 left-4 z-50
-    w-12 h-12
-    rounded-full
-    bg-[#0b0d12]/80
-    border border-slate-700
-    flex items-center justify-center
-    backdrop-blur
-  "
+        className={`
+  lg:hidden fixed top-4 left-4 z-50
+  w-12 h-12
+  rounded-full
+  bg-[#1c1c1e]/80
+  border border-[#2c2c2e]
+  flex items-center justify-center
+  backdrop-blur
+  active:scale-95
+  transition
+`}
         aria-label="Toggle menu"
       >
         <motion.div
           animate={open ? "open" : "closed"}
-          transition={{ duration: 0.2, ease: "easeInOut" }}
-          className="relative w-6 h-6"
+          transition={{ duration: 0.18, ease: "easeInOut" }}
+          className="relative w-6 h-6 flex items-center justify-center"
         >
           {/* TOP */}
           <motion.span
             variants={{
-              closed: { y: -5, rotate: 0 },
+              closed: { y: -4.5, rotate: 0 },
               open: { y: 0, rotate: 45 },
             }}
-            className="absolute left-0 right-0 mx-auto
-        h-[1.5px] w-6
-        bg-slate-200 rounded-full"
+            className="absolute w-6 h-[1.5px] bg-slate-200 rounded-full"
           />
 
           {/* MIDDLE */}
@@ -117,23 +117,20 @@ export default function Navbar() {
               closed: { opacity: 1 },
               open: { opacity: 0 },
             }}
-            transition={{ duration: 0.15 }}
-            className="absolute left-0 right-0 top-1/2 -translate-y-1/2 mx-auto
-        h-[1.5px] w-6
-        bg-slate-200 rounded-full"
+            transition={{ duration: 0.12 }}
+            className="absolute w-6 h-[1.5px] bg-slate-200 rounded-full"
           />
 
           {/* BOTTOM */}
           <motion.span
             variants={{
-              closed: { y: 5, rotate: 0 },
+              closed: { y: 4, rotate: 0 },
               open: { y: 0, rotate: -45 },
             }}
-            className="absolute left-0 right-0 mx-auto
-        h-[1.5px] w-6
-        bg-slate-200 rounded-full"
+            className="absolute w-6 h-[1.5px] bg-slate-200 rounded-full"
           />
         </motion.div>
+        transition
       </button>
 
       {/* ================= MOBILE SIDEBAR ================= */}
@@ -154,7 +151,7 @@ export default function Navbar() {
               initial={{ x: -260 }}
               animate={{ x: 0 }}
               exit={{ x: -260 }}
-              transition={{ type: "spring", stiffness: 120 }}
+              transition={{ duration: 0.25, ease: "easeInOut" }}
               className="
                 w-64 h-full
                 bg-[#0b0d12]
