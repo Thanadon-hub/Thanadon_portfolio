@@ -40,11 +40,24 @@ export default function Navbar() {
       >
         <div className="flex flex-col w-full">
           {/* LOGO */}
-          <div className="mb-12">
-            <p className="text-xs tracking-[0.4em] text-slate-500">PORTFOLIO</p>
-            <h1 className="mt-2 text-lg font-semibold text-slate-200">
-              Thanadon
-            </h1>
+          <div className="flex items-center justify-between mb-10">
+            <h2 className="text-lg font-semibold text-slate-200">Thanadon</h2>
+
+            <button
+              onClick={() => setOpen(false)}
+              className="
+      w-10 h-10
+      rounded-full
+      border border-slate-700
+      flex items-center justify-center
+      text-slate-300
+      hover:text-cyan-400
+      transition
+    "
+              aria-label="Close menu"
+            >
+              ✕
+            </button>
           </div>
 
           {/* LINKS */}
@@ -85,17 +98,17 @@ export default function Navbar() {
       <button
         onClick={() => setOpen((prev) => !prev)}
         className={`
-  lg:hidden fixed top-4 left-4 z-50
-  w-12 h-12
-  rounded-full
-  bg-[#1c1c1e]/80
-  border border-[#2c2c2e]
-  flex items-center justify-center
-  backdrop-blur
-  active:scale-95
-  transition
-`}
-        aria-label="Toggle menu"
+    lg:hidden fixed top-4 left-4 z-50
+    ${open ? "opacity-0 pointer-events-none" : "opacity-100"}
+    w-12 h-12
+    rounded-full
+    bg-[#1c1c1e]/80
+    border border-[#2c2c2e]
+    flex items-center justify-center
+    backdrop-blur
+    active:scale-95
+    transition
+  `}
       >
         <motion.div
           animate={open ? "open" : "closed"}
