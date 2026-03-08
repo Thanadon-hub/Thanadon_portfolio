@@ -10,7 +10,7 @@ import {
   Mail,
   ChevronRight,
   Menu,
-  Server,
+  CheckCircle,
 } from "lucide-react";
 
 export default function Navbar({ collapse, setCollapse }) {
@@ -55,7 +55,13 @@ export default function Navbar({ collapse, setCollapse }) {
           {/* HEADER */}
           <div className="flex items-center justify-between mb-10">
             {!collapse && (
-              <h2 className="text-lg font-semibold text-slate-200">Thanadon <Server size={20} /></h2>
+              <h2 className="flex items-center gap-2 text-lg font-semibold text-slate-200">
+                Thanadon
+                <CheckCircle
+                  size={16}
+                  className="text-cyan-400 fill-cyan-400"
+                />
+              </h2>
             )}
 
             <button
@@ -166,8 +172,12 @@ export default function Navbar({ collapse, setCollapse }) {
               px-6 py-8"
               onClick={(e) => e.stopPropagation()}
             >
-              <h2 className="text-lg font-semibold text-slate-200 mb-10">
+              <h2 className="flex items-center gap-2 text-lg font-semibold text-slate-200">
                 Thanadon
+                <CheckCircle
+                  size={16}
+                  className="text-cyan-400 fill-cyan-400"
+                />
               </h2>
 
               <nav className="flex flex-col gap-2">
