@@ -10,7 +10,7 @@ import {
   Mail,
   ChevronRight,
   Menu,
-  server,
+  Server,
 } from "lucide-react";
 
 export default function Navbar({ collapse, setCollapse }) {
