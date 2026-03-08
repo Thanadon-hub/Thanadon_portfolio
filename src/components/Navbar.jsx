@@ -10,6 +10,7 @@ import {
   Mail,
   ChevronRight,
   Menu,
+  server,
 } from "lucide-react";
 
 export default function Navbar({ collapse, setCollapse }) {
@@ -54,7 +55,7 @@ export default function Navbar({ collapse, setCollapse }) {
           {/* HEADER */}
           <div className="flex items-center justify-between mb-10">
             {!collapse && (
-              <h2 className="text-lg font-semibold text-slate-200">Thanadon</h2>
+              <h2 className="text-lg font-semibold text-slate-200">Thanadon <Server size={20} /></h2>
             )}
 
             <button
