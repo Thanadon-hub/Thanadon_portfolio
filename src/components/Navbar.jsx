@@ -57,10 +57,7 @@ export default function Navbar({ collapse, setCollapse }) {
             {!collapse && (
               <h2 className="flex items-center gap-2 text-lg font-semibold text-slate-200">
                 Thanadon
-                <CheckCircle
-                  size={16}
-                  className="text-cyan-400 fill-cyan-400"
-                />
+                <CheckCircle size={16} className="text-cyan-400" />
               </h2>
             )}
 
@@ -174,10 +171,7 @@ export default function Navbar({ collapse, setCollapse }) {
             >
               <h2 className="flex items-center gap-2 text-lg font-semibold text-slate-200">
                 Thanadon
-                <CheckCircle
-                  size={16}
-                  className="text-cyan-400 fill-cyan-400"
-                />
+                <CheckCircle size={16} className="text-cyan-400" />
               </h2>
 
               <nav className="flex flex-col gap-2">
