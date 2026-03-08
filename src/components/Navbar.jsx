@@ -110,34 +110,34 @@ export default function Navbar({ collapse, setCollapse }) {
       </aside>
 
       {/* ================= MOBILE BUTTON ================= */}
-
-      <button
-        onClick={() => setOpen(true)}
-        className={`
-  lg:hidden fixed top-4 left-4 z-50
-  ${open ? "opacity-0 pointer-events-none" : ""}
-  w-12 h-12
-  rounded-full
-  bg-[#1c1c1e]/80
-  border border-[#2c2c2e]
-  flex items-center justify-center
+      <div
+        className="
+  lg:hidden
+  fixed top-0 left-0 right-0
+  h-16
+  flex items-center justify-between
+  px-4
+  bg-[#0b0d12]/80
   backdrop-blur
-  transition
-`}
+  border-b border-slate-800
+  z-40
+"
       >
-        ☰
-      </button>
+        <h1 className="text-sm font-semibold text-slate-200">Thanadon</h1>
 
-      <div className="flex items-center justify-between mb-10">
-        <h2 className="text-lg font-semibold text-slate-200">Thanadon</h2>
-
+        {/* Hamburger */}
         <button
-          onClick={() => setOpen(false)}
-          className="w-9 h-9 flex items-center justify-center
-    rounded-lg border border-slate-700
-    hover:bg-white/5 transition"
+          onClick={() => setOpen(true)}
+          className="
+    w-10 h-10
+    flex items-center justify-center
+    rounded-lg
+    border border-slate-700
+    hover:bg-white/5
+    transition
+  "
         >
-          ✕
+          ☰
         </button>
       </div>
 
