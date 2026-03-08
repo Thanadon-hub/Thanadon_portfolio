@@ -9,6 +9,7 @@ import {
   GraduationCap,
   Mail,
   ChevronRight,
+  Menu,
 } from "lucide-react";
 
 export default function Navbar({ collapse, setCollapse }) {
@@ -137,7 +138,7 @@ export default function Navbar({ collapse, setCollapse }) {
     transition
   "
         >
-          ☰
+          <Menu size={20} />
         </button>
       </div>
 
